@@ -19,7 +19,7 @@ export default class User extends BaseModel {
   @column()
   public roleId: number
 
-  @belongsTo(() => Role)
+  @belongsTo(() => Role, { foreignKey: 'roleId' })
   public role: BelongsTo<typeof Role>
 
   @column()
