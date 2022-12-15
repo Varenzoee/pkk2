@@ -1,8 +1,7 @@
+import Hash from '@ioc:Adonis/Core/Hash'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/LoginValidator'
-import Hash from '@ioc:Adonis/Core/Hash'
-import Role from 'App/Models/Role'
 
 export default class LoginController {
   public async index({ auth, request, response }: HttpContextContract) {
