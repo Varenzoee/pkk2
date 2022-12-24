@@ -26,6 +26,9 @@ Route.get('/', async () => {
 
 Route.post('/login', 'Authentication/LoginController.index')
 Route.post('/register', 'Authentication/RegisterController.index')
-Route.resource('/employees', 'EmployeesController')
-Route.resource('/scores', 'ScoresController')
-Route.resource('/scores_of_employees', 'ScoresOfEmployeesController')
+
+Route.group(() => {
+  Route.resource('/employees', 'EmployeesController')
+  Route.resource('/scores', 'ScoresController')
+  Route.resource('/scores_of_employees', 'ScoresOfEmployeesController')
+}).middleware('auth:api')
