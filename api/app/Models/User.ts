@@ -1,11 +1,24 @@
-import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  beforeCreate,
+  beforeSave,
+  belongsTo,
+  BelongsTo,
+  column,
+} from '@ioc:Adonis/Lucid/Orm'
+import { DateTime } from 'luxon'
+import { nanoid } from 'nanoid'
 import Role from './Role'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: string
+
+  @beforeCreate()
+  public static generateId(user: User) {
+    user.id = nanoid()
+  }
 
   @column()
   public email: string

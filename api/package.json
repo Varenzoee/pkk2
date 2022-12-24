@@ -9,7 +9,8 @@
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "migration:fresh": "node ace migration:fresh",
-    "db:seed": "node ace db:seed --files ./database/seeders/DatabaseSeeder.ts"
+    "db:seed": "node ace db:seed --files ./database/seeders/DatabaseSeeder.ts",
+    "migration:seed": "npm run migration:fresh && npm run db:seed"
   },
   "license": "apache-2.0",
   "eslintConfig": {
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",
+    "@faker-js/faker": "^7.6.0",
     "@japa/preset-adonis": "^1.2.0",
     "@japa/runner": "^2.2.2",
     "@types/proxy-addr": "^2.0.0",
@@ -63,6 +65,7 @@
     "@adonisjs/repl": "^3.1.0",
     "luxon": "^3.1.1",
     "mysql2": "^2.3.3",
+    "nanoid": "^3.3.4",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
