@@ -1,7 +1,6 @@
 import { BaseModel, beforeCreate, beforeSave, beforeUpdate, column } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import { nanoid } from 'nanoid'
-import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class Score extends BaseModel {
   @column({ isPrimary: true })
@@ -44,14 +43,6 @@ export default class Score extends BaseModel {
 
   @beforeCreate()
   public static generateFinalScoreBC(score: Score) {
-    Logger.info(
-      typeof score.attendance +
-        score.integrity +
-        score.responsibility +
-        score.teamwork +
-        score.skill +
-        score.creativity
-    )
     score.finalScore =
       score.attendance +
       score.integrity +

@@ -8,9 +8,9 @@ export default class ScoresController {
     try {
       const { month, year } = request.qs()
       let data: Score[] = []
-      if (request.qs()) {
+      if (month || year) {
         if (!month || !year) {
-          return response.badRequest({ message: 'month and year must in query' })
+          return response.notFound({ message: 'month and year must in query' })
         }
         data = await Score.query().where('month', month).where('year', year)
         if (!data.length) {
@@ -22,7 +22,7 @@ export default class ScoresController {
 
       return response.ok(data)
     } catch (error) {
-      return response.badRequest(error)
+      return response.notFound(error)
     }
   }
 
