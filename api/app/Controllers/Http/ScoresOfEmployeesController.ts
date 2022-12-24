@@ -2,10 +2,8 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class ScoresOfEmployeesController {
-  public async index({ request, response }: HttpContextContract) {
+  public async index({ response }: HttpContextContract) {
     try {
-      const { employeeId, month, year } = request.qs()
-
       const data = await Database.from('employees')
         .join('scores', 'scores.employee_id', 'employees.id')
         .select([
