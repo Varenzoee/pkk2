@@ -31,4 +31,5 @@ Route.group(() => {
   Route.resource('/employees', 'EmployeesController')
   Route.resource('/scores', 'ScoresController')
   Route.resource('/scores_of_employees', 'ScoresOfEmployeesController')
+  Route.get('/logout', 'Authentication/LogoutController.index')
 }).middleware('auth:api')
