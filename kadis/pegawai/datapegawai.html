@@ -147,47 +147,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>190602054</td>
-                                            <td>Mohammad Lukman</td>
-                                            <td>0986267381</td>
-                                            <td>Lukman@gmail.com</td>
-                                            <td>PAD</td>
-                                            <td>
-                                                <div class="d-grid gap-1 d-md-block">
-                                                    <a href="fromtambah.html"
-                                                        class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
-                                                            class="fas fa-pen"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#logoutModal"
-                                                        class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>190602064</td>
-                                            <td>ilham baiqi</td>
-                                            <td>0986267322</td>
-                                            <td>ilham@gmail.com</td>
-                                            <td>PKMED</td>
-                                            <td>
-                                                <div class="d-grid gap-1 d-md-block">
-                                                    <a href="fromtambah.html"
-                                                        class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
-                                                            class="fas fa-pen"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#logoutModal"
-                                                        class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <tbody id="tabel">
                                     </tbody>
                                 </table>
                             </div>
@@ -271,11 +231,58 @@
     <!-- databael -->
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
         })
+    </script>
+
+    <!-- script elek"an -->
+    <script>
+        const tabel = document.getElementById('tabel')
+        // console.log(tabel)
+
+        const token = window.localStorage.getItem('token')
+        axios.get('http://192.168.99.28:3333/employees', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((Response) => {
+            console.log(Response);
+            const data = Response.data
+            console.log(data)
+
+            data.forEach((item, index) => {
+                tabel.innerHTML += `
+                    <tr>
+                        <td>${index}</td>
+                        <td>${item.fullname}</td>
+                        <td>${item.phone}</td>
+                        <td>${item.email}</td>
+                        <td>${item.bidang}</td>
+                        <td>
+                            <div class="d-grid gap-1 d-md-block">
+                                <a href="fromtambah.html"
+                                    class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                                        class="fas fa-pen"></i>
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#logoutModal"
+                                    class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                `
+            });
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+
     </script>
 
 </body>
