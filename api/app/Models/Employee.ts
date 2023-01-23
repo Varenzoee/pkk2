@@ -13,10 +13,13 @@ export default class Employee extends BaseModel {
   }
 
   @column()
-  public nip: string
+  public nip: number
 
   @column()
   public fullname: string
+
+  @column()
+  public bidang: 'PAD' | 'PKMED' | 'BPD'
 
   @column()
   public phone: string

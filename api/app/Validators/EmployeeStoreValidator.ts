@@ -24,7 +24,8 @@ export default class EmployeeStoreValidator {
    *    ```
    */
   public schema = schema.create({
-    nip: schema.string({}, [rules.required(), rules.unique({ table: 'employees', column: 'nip' })]),
+    nip: schema.number([rules.required(), rules.unique({ table: 'employees', column: 'nip' })]),
+    bidang: schema.enum(['PAD', 'PKMED', 'BPD'] as const, [rules.required()]),
     fullname: schema.string({}, [rules.required()]),
     phone: schema.string({}, [rules.required(), rules.mobile({ locale: ['id-ID'], strict: true })]),
     email: schema.string({}, [rules.required(), rules.email()]),
