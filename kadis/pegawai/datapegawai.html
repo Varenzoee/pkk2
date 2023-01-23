@@ -244,6 +244,7 @@
         const tabel = document.getElementById('tabel')
         // console.log(tabel)
 
+        // tambah data
         const token = window.localStorage.getItem('token')
         axios.get('http://192.168.99.28:3333/employees', {
             headers: {
@@ -256,8 +257,9 @@
 
             data.forEach((item, index) => {
                 tabel.innerHTML += `
-                    <tr>
+                    <tr key="${item.id}">
                         <td>${index}</td>
+                        <td>${item.nip}</td>
                         <td>${item.fullname}</td>
                         <td>${item.phone}</td>
                         <td>${item.email}</td>
@@ -268,10 +270,10 @@
                                     class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
                                         class="fas fa-pen"></i>
                                 </a>
-                                <a href="#" data-toggle="modal" data-target="#logoutModal"
+                                <button onclick="hapus('${item.id}')"
                                     class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                                     <i class="fas fa-trash-alt"></i>
-                                </a>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -282,7 +284,25 @@
             console.log(error);
         });
 
+        // edit data
+        function hapus(id) {
+            const setuju = confirm('Apakah anda ingin menghapus data pegawai ini?')
+            if (!setuju) {
+                return
+            }
+            const token = window.localStorage.getItem('token')
+            axios.delete(`http://192.168.99.28:3333/employees/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(function () {
+                const akan = document.querySelector(`[key="${id}"]`)
+                akan.remove()
+            }).catch(function (error) {
+                console.log(error)
+            })
 
+        }
     </script>
 
 </body>
