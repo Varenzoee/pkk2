@@ -131,7 +131,7 @@
                                     MASYRAKAT DAN DESA
                                 </h6>
                             </div>
-                            <form class="col-xl-12 col-lg-5" id="formtambah">
+                            <form class="col-xl-12 col-lg-5" id="formedit">
                                 <div class="mb-1">
                                     <label for="inputnip" class="form-label">NIP</label>
                                     <input type="number" class="form-control" id="inputnip" aria-describedby="nip"
@@ -232,19 +232,39 @@
 
         <!-- script -->
         <script>
-            const form = document.getElementById('formtambah');
+            const form = document.getElementById('formedit');
             console.log(form)
+            let nip = document.getElementById('inputnip').value
+            let fullname = document.getElementById('inputnama').value
+            let phone = document.getElementById('inputno').value
+            let email = document.getElementById('inputemail').value
+            let bidang = document.getElementById('inputbidang').value
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const token = window.localStorage.getItem('token')
+            axios.get(`http://192.168.232.28:3333/employees/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((Response) => {
+                nip = Response.data.nip
+                fullname = Response.data.fullname
+                phone = Response.data.phone
+                email = Response.data.email
+                bidang = Response.data.bidang
+                console.log(Response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
             form.addEventListener('submit', (e) => {
                 e.preventDefault()
-                const nip = document.getElementById('inputnip').value
-                const fullname = document.getElementById('inputnama').value
-                const phone = document.getElementById('inputno').value
-                const email = document.getElementById('inputemail').value
-                const bidang = document.getElementById('inputbidang').value
+
+
 
                 console.log(nip, fullname, phone, email, bidang)
                 const token = window.localStorage.getItem('token')
-                axios.post('http://192.168.232.28:3333/employees', {
+                axios.put(`http://192.168.232.28:3333/employees/${id}`, {
                     nip,
                     fullname,
                     phone,
