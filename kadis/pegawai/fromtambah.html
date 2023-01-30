@@ -135,27 +135,23 @@
                                 <div class="mb-1">
                                     <label for="inputnip" class="form-label">NIP</label>
                                     <input type="number" class="form-control" id="inputnip" aria-describedby="nip"
-                                        placeholder="NIP" required>
+                                        placeholder="NIP">
                                 </div>
                                 <div class="mb-1">
                                     <label for="inputnama" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="inputnama" placeholder="Nama Lengkap"
-                                        required>
+                                    <input type="text" class="form-control" id="inputnama" placeholder="Nama Lengkap">
                                 </div>
                                 <div class="mb-1">
                                     <label for="inputhp" class="form-label">No Hp</label>
-                                    <input type="tel" class="form-control" id="inputno"
-                                        placeholder="example +628*********" pattern="+628[0-9]{8,10}" required>
+                                    <input type="phone" class="form-control" id="inputno" placeholder="No Hp">
                                 </div>
                                 <div class="mb-1">
                                     <label for="inputemail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="inputemail" placeholder="Email"
-                                        required>
+                                    <input type="email" class="form-control" id="inputemail" placeholder="Email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="bidang" class="form-label">Bidang</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputbidang"
-                                        required>
+                                    <select class="form-select" aria-label="Default select example" id="inputbidang">
                                         <option selected>Pilih Bidang</option>
                                         <option value="PAD">PAD</option>
                                         <option value="PKMED">PKMED</option>
@@ -244,7 +240,7 @@
 
                 console.log(nip, fullname, phone, email, bidang)
                 const token = window.localStorage.getItem('token')
-                axios.post('http://192.168.232.28:3333/employees', {
+                axios.post('http://192.168.99.28:3333/employees', {
                     nip,
                     fullname,
                     phone,

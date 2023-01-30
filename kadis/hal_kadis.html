@@ -29,11 +29,10 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="https://dpmd.gresikkab.go.id/">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +42,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -67,7 +66,7 @@
             <!-- Nav Item - Laporan -->
             <li class="nav-item">
                 <a class="nav-link" href="laporan/laporanpenilaian.html">
-                    <i class="fas fa-server"></i>
+                    <i class="fas fa-fw fa-table"></i>
                     <span>Laporan</span>
                 </a>
             </li>
@@ -277,12 +276,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apa anda Ingin Logout</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout apabila anda ingin keluar dari halaman ini!</div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
@@ -308,45 +307,11 @@
     <!-- Page level plugins -->
     <script src="/datatables/jquery.dataTables.min.js"></script>
     <script src="/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
         });
-    </script>
-
-    <!-- script elekan -->
-    <!-- <script>
-        const tabel = document.getElementById('datatabel')
-
-        const token = window.localStorage.getItem('token')
-        axios.get('http://192.168.232.28:3333/employees', {
-            Headers: {
-                Authorization: `bearer ${token}`
-            }
-        }).then((Response) => {
-            console.log(Response);
-            const data = Response.data
-            console.log(data)
-
-            data.forEach((item, index) => {
-                tabel.innerHTML += `
-                    <tr key="${item.id}">
-                        <td>${index}</td>
-                        <td>${item.nip}</td>
-                        <td>${item.fullname}</td>
-                        <td>${item.phone}</td>
-                        <td>${item.email}</td>
-                        <td>${item.bidang}</td>
-                    </tr>
-                `
-            });
-
-        }).catch(function (error) {
-            console.log(error);
-        }); -->
-
     </script>
 
 </body>

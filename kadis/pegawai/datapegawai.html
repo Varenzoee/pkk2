@@ -203,12 +203,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apa Anda Ingin Logout?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout apabila anda ingin keluar dari halaman ini!</div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
@@ -246,7 +246,7 @@
 
         // tambah data
         const token = window.localStorage.getItem('token')
-        axios.get('http://192.168.232.28:3333/employees', {
+        axios.get('http://192.168.99.28:3333/employees', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -266,7 +266,7 @@
                         <td>${item.bidang}</td>
                         <td>
                             <div class="d-grid gap-1 d-md-block">
-                                <a href="editpegawai.html?id=${item.id}"
+                                <a href="fromtambah.html"
                                     class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
                                         class="fas fa-pen"></i>
                                 </a>
@@ -284,14 +284,14 @@
             console.log(error);
         });
 
-        // hpus data
+        // edit data
         function hapus(id) {
             const setuju = confirm('Apakah anda ingin menghapus data pegawai ini?')
             if (!setuju) {
                 return
             }
             const token = window.localStorage.getItem('token')
-            axios.delete(`http://192.168.232.28:3333/employees/${id}`, {
+            axios.delete(`http://192.168.99.28:3333/employees/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -303,10 +303,6 @@
             })
 
         }
-        S
-        // edit
-
-
     </script>
 
 </body>
