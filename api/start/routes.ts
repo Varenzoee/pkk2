@@ -29,9 +29,9 @@ Route.post('/login', 'Authentication/LoginController.index')
 Route.post('/register', 'Authentication/RegisterController.index')
 
 Route.group(() => {
-  Route.resource('/employees', 'EmployeesController')
-  Route.resource('/scores', 'ScoresController')
-  Route.resource('/scores_of_employees', 'ScoresOfEmployeesController')
+  Route.resource('/employees', 'EmployeesController').except(['create', 'edit'])
+  Route.resource('/scores', 'ScoresController').except(['create', 'edit'])
+  Route.resource('/scores_of_employees', 'ScoresOfEmployeesController').except(['create', 'edit'])
   Route.get('/logout', 'Authentication/LogoutController.index')
 }).middleware('auth:api')
 

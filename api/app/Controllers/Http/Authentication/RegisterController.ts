@@ -11,9 +11,9 @@ export default class RegisterController {
       const role = await Role.findByOrFail('role', payload.role)
       const user = await User.create({ ...payload, roleId: role.id })
 
-      const token = await auth.use('api').generate(user)
+      // const token = await auth.use('api').generate(user)
 
-      return response.created({ token, user, role })
+      return response.created({ user, role })
     } catch (error) {
       return response.badRequest(error)
     }
